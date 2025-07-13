@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Mail, Github, Linkedin } from 'lucide-react';
-import myimage from '../assets/myimage.jpg';
+<<<<<<< HEAD
+
 const FixedProfileBar: React.FC = () => (
   <div className="fixed top-0 left-0 w-full bg-white bg-opacity-90 z-[100] flex items-center justify-center shadow-md py-2">
     <img
-      src={myimage}
+      src="/profile.jpg"
       alt="Bhoomi Khandelwal"
       className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-pink-400"
     />
     <span className="text-lg font-bold text-pink-700">Bhoomi Khandelwal</span>
   </div>
 );
+
+import myimage from '../assets/myimage.jpg';
+
+>>>>>>> 758d6a1 (profile add)
 
 const Hero: React.FC = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -54,7 +59,11 @@ const Hero: React.FC = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <FixedProfileBar />
+=======
+      
+>>>>>>> 758d6a1 (profile add)
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#201e20] via-[#674846] to-[#59260B] opacity-90" />
@@ -84,15 +93,20 @@ const Hero: React.FC = () => {
               >
                 <div className="w-full h-full rounded-full bg-[#201e20] flex items-center justify-center">
                   <img
-                    src=
+<<<<<<< HEAD
+                    src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=400"
+=======
+                    src={myimage}
+>>>>>>> 758d6a1 (profile add)
                     alt="Bhoomi Khandelwal"
                     className="w-[95%] h-[95%] rounded-full object-cover"
                   />
                 </div>
               </motion.div>
 
+<<<<<<< HEAD
               {/* Orbiting Skills */}
-              {skills.map((skill) => (
+              {skills.map((skill, index) => (
                 <motion.div
                   key={skill.name}
                   className="absolute w-20 h-20 rounded-full bg-[#ddc3a5] flex items-center justify-center font-medium text-[#201e20] text-sm shadow-lg cursor-pointer group"
@@ -135,6 +149,8 @@ const Hero: React.FC = () => {
                   </motion.span>
                 </motion.div>
               ))}
+              
+>>>>>>> 758d6a1 (profile add)
             </div>
           </motion.div>
 
