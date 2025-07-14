@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Download, Mail, Sun, Moon } from 'lucide-react';
+import { Menu, X, Download, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavigationProps {
   activeSection: string;
   setActiveSection: (section: string) => void;
-  darkMode: boolean;
-  toggleDarkMode: () => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ 
   activeSection, 
-  setActiveSection, 
-  darkMode, 
-  toggleDarkMode 
+  setActiveSection
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,7 +18,6 @@ const Navigation: React.FC<NavigationProps> = ({
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -43,14 +38,6 @@ const Navigation: React.FC<NavigationProps> = ({
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleResumeDownload = () => {
-    // In a real app, this would download the actual resume
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Bhoomi_Khandelwal_Resume.pdf';
-    link.click();
-  };
-
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -67,10 +54,10 @@ const Navigation: React.FC<NavigationProps> = ({
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="font-bold text-xl text-[#ddc3a5] cursor-pointer"
+            className="font-bold text-xl cursor-pointer animate-pulse-glow"
             onClick={() => handleNavClick('home')}
           >
-            BK
+            <span className="text-[#ddc3a5]">Bhoomi</span> <span className="text-[#c9b491]">Khandelwal</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -79,49 +66,39 @@ const Navigation: React.FC<NavigationProps> = ({
               <motion.button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`text-base font-bold transition-colors duration-200 ${
                   activeSection === item.id
-                    ? 'text-[#ddc3a5] border-b-2 border-[#ddc3a5]'
-                    : 'text-gray-300 hover:text-[#ddc3a5]'
+                    ? 'text-[#ddc3a5] border-b-2 border-[#ddc3a5] underline underline-offset-4'
+                    : 'text-white hover:text-[#ddc3a5] hover:shadow-[0_2px_10px_rgba(221,195,165,0.5)]'
                 }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.97 }}
+                style={{ letterSpacing: '0.02em' }}
               >
                 {item.label}
               </motion.button>
             ))}
-          </div>
-
-          {/* Action Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <motion.button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full bg-[#674846] text-[#ddc3a5] hover:bg-[#59260B] transition-colors duration-200"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-            </motion.button>
-
-            <motion.button
-              onClick={handleResumeDownload}
-              className="flex items-center space-x-2 px-4 py-2 bg-[#ddc3a5] text-[#201e20] rounded-full font-medium hover:bg-[#c9b491] transition-colors duration-200"
+            {/* Resume and Hire Me Buttons */}
+            <motion.a
+              href="/Bhoomi%20khandelwal%20resume.pdf"
+              download="bhoomi_khandelwal_resume.pdf"
+              className="flex items-center space-x-2 px-4 py-1.5 border-2 border-[#f5e8d8] bg-[#f5e8d8] text-[#201e20] rounded-full font-medium shadow text-base"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Download size={18} />
               <span>Resume</span>
-            </motion.button>
-
-            <motion.button
+            </motion.a>
+            <button
               onClick={() => handleNavClick('contact')}
-              className="flex items-center space-x-2 px-4 py-2 bg-[#59260B] text-[#ddc3a5] rounded-full font-medium hover:bg-[#013220] transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex items-center space-x-2 px-4 py-1.5 border-2 border-[#f5e8d8] text-[#f5e8d8] rounded-full font-medium shadow text-base hover:bg-[#f5e8d8] hover:text-[#201e20] transition-colors duration-200"
             >
               <Mail size={18} />
               <span>Hire Me</span>
-            </motion.button>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -162,27 +139,6 @@ const Navigation: React.FC<NavigationProps> = ({
                   {item.label}
                 </motion.button>
               ))}
-              
-              <div className="flex items-center space-x-4 pt-4">
-                <motion.button
-                  onClick={toggleDarkMode}
-                  className="p-2 rounded-full bg-[#674846] text-[#ddc3a5]"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-                </motion.button>
-
-                <motion.button
-                  onClick={handleResumeDownload}
-                  className="flex items-center space-x-2 px-4 py-2 bg-[#ddc3a5] text-[#201e20] rounded-full font-medium"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Download size={18} />
-                  <span>Resume</span>
-                </motion.button>
-              </div>
             </div>
           </motion.div>
         )}

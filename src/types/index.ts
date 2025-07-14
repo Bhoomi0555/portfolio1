@@ -21,6 +21,7 @@ export interface Skill {
   name: string;
   category: 'Programming' | 'Web' | 'DevOps' | 'ML' | 'Soft';
   level: number;
+  logo?: string; // URL or icon name for the skill logo
 }
 
 export interface Education {

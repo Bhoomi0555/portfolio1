@@ -1,19 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Github, Linkedin, Mail, MessageCircle, Instagram, ArrowUp } from 'lucide-react';
+import { Heart, ArrowUp } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const socialLinks = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/bhoomikhandelwal' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/bhoomikhandelwal' },
-    { icon: Mail, label: 'Email', href: 'mailto:bhoomikhandelwal16@gmail.com' },
-    { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/8875077255' },
-    { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/bhoomi_k22?igsh=eGtpZ2xwdDh5cGE0' },
-  ];
 
   return (
     <footer className="bg-[#201e20] relative overflow-hidden">
@@ -32,29 +24,8 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-        <div className="text-center">
-          {/* Social Links */}
-          <div className="flex justify-center space-x-6 mb-8">
-            {socialLinks.map((social, index) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-3 bg-[#674846]/30 rounded-full hover:bg-[#ddc3a5] transition-all duration-200"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                title={social.label}
-              >
-                <social.icon size={24} className="text-[#ddc3a5] group-hover:text-[#201e20] transition-colors duration-200" />
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Copyright */}
+        <div className="flex flex-col items-center justify-center w-full">
+          {/* Left: Copyright */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,6 +36,8 @@ const Footer: React.FC = () => {
             <Heart size={16} className="text-red-500 animate-pulse" />
             <span>by Bhoomi — 2025</span>
           </motion.p>
+          {/* Social icons removed as requested */}
+        </div>
 
           {/* Back to Top Button */}
           <motion.button
@@ -79,7 +52,6 @@ const Footer: React.FC = () => {
             <ArrowUp size={24} />
           </motion.button>
         </div>
-      </div>
     </footer>
   );
 };

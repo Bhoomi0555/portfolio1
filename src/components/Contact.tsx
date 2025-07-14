@@ -53,13 +53,6 @@ const Contact: React.FC = () => {
     { icon: Mail, label: 'Email', value: 'bhoomikhandelwal16@gmail.com' },
   ];
 
-  const socialLinks = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/bhoomikhandelwal' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/bhoomikhandelwal' },
-    { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/bhoomikhandelwal' },
-    { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/8875077255' },
-  ];
-
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-[#674846] to-[#201e20] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
@@ -121,23 +114,59 @@ const Contact: React.FC = () => {
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
               <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-3 bg-[#59260B]/30 rounded-full hover:bg-[#ddc3a5] transition-all duration-200"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.9 }}
-                    title={social.label}
-                  >
-                    <social.icon size={24} className="text-[#ddc3a5] group-hover:text-[#201e20] transition-colors duration-200" />
-                  </motion.a>
-                ))}
+                <motion.a
+                  href="https://github.com/Bhoomi0555"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-[#59260B]/30 rounded-full hover:bg-[#ddc3a5] transition-all duration-200"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="GitHub"
+                >
+                  <Github size={24} className="text-[#ddc3a5] group-hover:text-[#201e20] transition-colors duration-200" />
+                </motion.a>
+                <motion.a
+                  href="https://www.linkedin.com/in/bhoomi-khandelwal-3a2918290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-[#59260B]/30 rounded-full hover:bg-[#ddc3a5] transition-all duration-200"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="LinkedIn"
+                >
+                  <Linkedin size={24} className="text-[#ddc3a5] group-hover:text-[#201e20] transition-colors duration-200" />
+                </motion.a>
+                <motion.a
+                  href="https://www.instagram.com/bhoomi_k22?igsh=eGtpZ2xwdDh5cGE0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-[#59260B]/30 rounded-full hover:bg-[#ddc3a5] transition-all duration-200"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="Instagram"
+                >
+                  <Instagram size={24} className="text-[#ddc3a5] group-hover:text-[#201e20] transition-colors duration-200" />
+                </motion.a>
+                <motion.a
+                  href="https://wa.me/8875077255"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 bg-[#59260B]/30 rounded-full hover:bg-[#ddc3a5] transition-all duration-200"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="WhatsApp"
+                >
+                  <MessageCircle size={24} className="text-[#ddc3a5] group-hover:text-[#201e20] transition-colors duration-200" />
+                </motion.a>
+                <motion.a
+                  href="mailto:bhoomikhandelwal16@gmail.com"
+                  className="group p-3 bg-[#59260B]/30 rounded-full hover:bg-[#ddc3a5] transition-all duration-200"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="Email"
+                >
+                  <Mail size={24} className="text-[#ddc3a5] group-hover:text-[#201e20] transition-colors duration-200" />
+                </motion.a>
               </div>
             </div>
           </motion.div>

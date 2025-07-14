@@ -2,36 +2,44 @@ import { Project, Certificate, Skill, Education } from '../types';
 
 export const projects: Project[] = [
   {
-    id: '1',
-    title: 'AI-Powered DevOps Pipeline',
-    description: 'Automated CI/CD pipeline with machine learning-based optimization for deployment strategies.',
-    techStack: ['Python', 'Docker', 'Kubernetes', 'TensorFlow', 'Jenkins'],
-    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com/bhoomikhandelwal'
-  },
-  {
-    id: '2',
-    title: 'Smart Analytics Dashboard',
-    description: 'Real-time data visualization platform with predictive analytics and interactive charts.',
-    techStack: ['React', 'Python', 'FastAPI', 'PostgreSQL', 'Chart.js'],
-    image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com/bhoomikhandelwal'
-  },
-  {
     id: '3',
-    title: 'ML Model Deployment Platform',
-    description: 'Scalable platform for deploying and monitoring machine learning models in production.',
-    techStack: ['Docker', 'MLflow', 'AWS', 'Python', 'FastAPI'],
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com/bhoomikhandelwal'
+    title: 'Code to Story Teller',
+    description: 'In this project, you can write code and, for understanding code, you can convert it into a story. There is also an option to generate stories in multiple languages.',
+    techStack: ['Python', 'NLP', 'Streamlit', 'Gradio'],
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80',
+    github: ''
   },
   {
     id: '4',
-    title: 'Intelligent Code Review Bot',
-    description: 'AI-powered code review assistant that provides automated feedback and suggestions.',
-    techStack: ['Python', 'OpenAI', 'GitHub API', 'Docker', 'PostgreSQL'],
-    image: 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com/bhoomikhandelwal'
+    title: 'AI DJ',
+    description: 'You can control music with your finger gestures, like pause, stop, rewind, and play music.',
+    techStack: ['AI', 'Gesture Recognition', 'Music Control', 'Python', 'Streamlit'],
+    image: '/hand.jpg',
+    github: ''
+  },
+  {
+    id: '5',
+    title: 'Woman Safety Portal',
+    description: 'A Streamlit project for women safety. At night, you can send a message and connect with your loved ones, and there is an emergency number as well.',
+    techStack: ['Python', 'Streamlit'],
+    image: '/woman.jpg',
+    github: ''
+  },
+  {
+    id: '6',
+    title: 'CI/CD Pipeline Project',
+    description: 'A robust CI/CD pipeline setup for automated testing, building, and deployment using modern DevOps tools. Integrates with GitHub Actions, Docker, Jenkins, and Git Bash for seamless delivery.',
+    techStack: ['CI/CD', 'GitHub Actions', 'Docker', 'Jenkins', 'Git Bash'],
+    image: '/cd.jpg',
+    github: ''
+  },
+  {
+    id: '7',
+    title: 'All-in-One Dashboard',
+    description: 'A powerful dashboard that combines messaging, calling, web scraping, Docker and Linux monitoring, and a file manager—all in one place. Perfect for productivity and system management.',
+    techStack: ['React', 'Node.js', 'WebRTC', 'Docker', 'Linux', 'File Manager', 'Twilio', 'OpenCV'],
+    image: '/dashboard.jpg',
+    github: ''
   }
 ];
 
@@ -40,50 +48,59 @@ export const certificates: Certificate[] = [
     id: '1',
     title: 'Google Cloud Study Jam',
     issuer: 'Google Cloud',
-    date: '2024',
-    image: 'https://images.pexels.com/photos/4974915/pexels-photo-4974915.jpeg?auto=compress&cs=tinysrgb&w=800'
+    date: '25-02-2024',
+    image: '/cloud.jpg'
   },
   {
     id: '2',
-    title: 'NPTEL Machine Learning',
-    issuer: 'NPTEL',
-    date: '2024',
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800'
+    title: 'Prayogam-2024',
+    issuer: 'Poornima University',
+    date: '28-02-2024',
+    image: '/pu.jpg'
   },
   {
     id: '3',
-    title: 'NPTEL Data Science',
-    issuer: 'NPTEL',
-    date: '2024',
-    image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800'
+    title: 'Food Packaging Technology',
+    issuer: 'NPTEL ONLINE CERTIFICATION',
+    date: '10-11-2024',
+    image: '/food.jpg'
   },
   {
     id: '4',
-    title: 'Prayogam 2024',
-    issuer: 'Technical Conference',
-    date: '2024',
-    image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800'
+    title: 'Employment Communication A Lab Based Course',
+    issuer: 'NPTEL ONLINE CERTIFICATION',
+    date: '4-04-2025',
+    image: '/employment.jpg'
   }
 ];
 
 export const skills: Skill[] = [
-  { name: 'Python', category: 'Programming', level: 90 },
-  { name: 'JavaScript', category: 'Programming', level: 85 },
-  { name: 'Java', category: 'Programming', level: 80 },
-  { name: 'TypeScript', category: 'Programming', level: 75 },
-  { name: 'React', category: 'Web', level: 85 },
-  { name: 'HTML/CSS', category: 'Web', level: 90 },
-  { name: 'Node.js', category: 'Web', level: 80 },
-  { name: 'Docker', category: 'DevOps', level: 85 },
-  { name: 'Kubernetes', category: 'DevOps', level: 70 },
-  { name: 'Jenkins', category: 'DevOps', level: 75 },
-  { name: 'AWS', category: 'DevOps', level: 70 },
-  { name: 'TensorFlow', category: 'ML', level: 80 },
-  { name: 'scikit-learn', category: 'ML', level: 85 },
-  { name: 'Pandas', category: 'ML', level: 90 },
-  { name: 'Leadership', category: 'Soft', level: 85 },
-  { name: 'Communication', category: 'Soft', level: 90 },
-  { name: 'Problem Solving', category: 'Soft', level: 95 }
+  { name: 'Python', category: 'Programming', level: 90, logo: 'python' },
+  { name: 'JavaScript', category: 'Programming', level: 85, logo: 'javascript' },
+  { name: 'Java', category: 'Programming', level: 80, logo: 'java' },
+  { name: 'React', category: 'Web', level: 85, logo: 'react' },
+  { name: 'HTML/CSS', category: 'Web', level: 90, logo: 'html5' },
+  { name: 'Node.js', category: 'Web', level: 80, logo: 'nodejs' },
+  { name: 'Docker', category: 'DevOps', level: 85, logo: 'docker' },
+  { name: 'Jenkins', category: 'DevOps', level: 75, logo: 'jenkins' },
+  { name: 'scikit-learn', category: 'ML', level: 85, logo: 'scikitlearn' },
+  { name: 'Pandas', category: 'ML', level: 90, logo: 'pandas' },
+  // New skills
+  { name: 'Git', category: 'DevOps', level: 85, logo: 'git' },
+  { name: 'GitHub', category: 'DevOps', level: 85, logo: 'github' },
+  { name: 'Linux', category: 'DevOps', level: 80, logo: 'linux' },
+  { name: 'MySQL', category: 'Web', level: 75, logo: 'mysql' },
+  { name: 'CI&CD', category: 'DevOps', level: 80, logo: 'cicd' },
+  { name: 'MongoDB', category: 'Web', level: 75, logo: 'mongodb' },
+  { name: 'PowerBI', category: 'Web', level: 70, logo: 'powerbi' },
+  { name: 'R', category: 'Programming', level: 70, logo: 'r' },
+  // Soft Skills
+  { name: 'Teamwork', category: 'Soft', level: 90, logo: '🤝' },
+  { name: 'Adaptability', category: 'Soft', level: 88, logo: '🔄' },
+  { name: 'Time management', category: 'Soft', level: 85, logo: '⏰' },
+  { name: 'Leadership', category: 'Soft', level: 85, logo: '🧑‍💼' },
+  { name: 'Communication', category: 'Soft', level: 90, logo: '💬' },
+  { name: 'Problem Solving', category: 'Soft', level: 95, logo: '🧠' }
 ];
 
 export const education: Education[] = [
@@ -111,9 +128,8 @@ export const education: Education[] = [
 ];
 
 export const currentlyLearning = [
-  'Docker & Kubernetes',
-  'System Design',
-  'Transformers',
-  'MLOps',
-  'Cloud Architecture'
+  { name: 'Flutter', logo: 'flutter' },
+  { name: 'Kubernetes', logo: 'kubernetes' },
+  { name: 'Terraform', logo: 'terraform' },
+  { name: 'AWS', logo: 'aws' },
 ];

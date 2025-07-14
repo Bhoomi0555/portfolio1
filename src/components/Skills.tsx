@@ -1,140 +1,144 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { skills } from '../data/portfolio';
+import { FaPython, FaAws, FaLinux, FaGitAlt, FaDocker, FaGithub, FaHtml5, FaJs, FaReact, FaNodeJs, FaChartBar, FaJava } from 'react-icons/fa';
+import { SiTypescript, SiKubernetes, SiJenkins, SiTensorflow, SiScikitlearn, SiPandas, SiTerraform, SiFlutter, SiMysql, SiMongodb, SiR } from 'react-icons/si';
+import { MdSync } from 'react-icons/md';
+
+const skillIcons: Record<string, JSX.Element> = {
+  python: <FaPython className="text-3xl text-[#3776AB]" />,
+  javascript: <FaJs className="text-3xl text-[#F7DF1E]" />,
+  java: <FaJava className="text-3xl text-[#007396]" />,
+  typescript: <SiTypescript className="text-3xl text-[#3178C6]" />,
+  react: <FaReact className="text-3xl text-[#61DAFB]" />,
+  html5: <FaHtml5 className="text-3xl text-[#E34F26]" />,
+  nodejs: <FaNodeJs className="text-3xl text-[#339933]" />,
+  docker: <FaDocker className="text-3xl text-[#2496ED]" />,
+  kubernetes: <SiKubernetes className="text-3xl text-[#326CE5]" />,
+  jenkins: <SiJenkins className="text-3xl text-[#D24939]" />,
+  aws: <FaAws className="text-3xl text-[#FF9900]" />,
+  tensorflow: <SiTensorflow className="text-3xl text-[#FF6F00]" />,
+  scikitlearn: <SiScikitlearn className="text-3xl text-[#F7931E]" />,
+  pandas: <SiPandas className="text-3xl text-[#150458]" />,
+  terraform: <SiTerraform className="text-2xl text-[#623CE4]" />,
+  git: <FaGitAlt className="text-3xl text-[#F05032]" />,
+  github: <FaGithub className="text-3xl text-[#181717]" />,
+  linux: <FaLinux className="text-3xl text-[#FCC624]" />,
+  mysql: <SiMysql className="text-3xl text-[#4479A1]" />,
+  cicd: <MdSync className="text-3xl text-[#ddc3a5]" />,
+  mongodb: <SiMongodb className="text-3xl text-[#47A248]" />,
+  powerbi: <FaChartBar className="text-3xl text-[#F2C811]" />,
+  r: <SiR className="text-3xl text-[#276DC3]" />,
+  flutter: <SiFlutter className="text-2xl text-[#02569B]" />,
+};
+
+// Helper function for highlight effect
+const addHighlight = (event: MouseEvent | TouchEvent | PointerEvent) => {
+  (event.currentTarget as HTMLDivElement).classList.add('highlighted-skill');
+};
+const removeHighlight = (event: MouseEvent | TouchEvent | PointerEvent) => {
+  setTimeout(() => (event.currentTarget as HTMLDivElement).classList.remove('highlighted-skill'), 300);
+};
 
 const Skills: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const categories = ['All', 'Programming', 'Web', 'DevOps', 'ML', 'Soft'];
-
-  const filteredSkills = activeFilter === 'All' 
-    ? skills 
-    : skills.filter(skill => skill.category === activeFilter);
-
-  const categoryColors = {
-    Programming: '#ddc3a5',
-    Web: '#59260B',
-    DevOps: '#013220',
-    ML: '#674846',
-    Soft: '#c9b491',
-  };
+  // Partition skills
+  const technicalSkills = skills.filter(skill => skill.category !== 'Soft');
+  const softSkills = skills.filter(skill => skill.category === 'Soft');
 
   return (
     <section id="skills" className="py-20 bg-gradient-to-br from-[#674846] to-[#201e20] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Technical <span className="text-[#ddc3a5]">Skills</span>
-          </h2>
-          <div className="w-24 h-1 bg-[#ddc3a5] mx-auto rounded-full" />
-        </motion.div>
-
-        {/* Filter Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
-          {categories.map((category) => (
-            <motion.button
-              key={category}
-              onClick={() => setActiveFilter(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
-                activeFilter === category
-                  ? 'bg-[#ddc3a5] text-[#201e20] shadow-lg'
-                  : 'bg-[#59260B]/30 text-gray-300 hover:bg-[#59260B]/50 hover:text-white'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {category}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Skills Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
-          {filteredSkills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              layout
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative"
-            >
-              <div className="bg-[#59260B]/30 backdrop-blur-sm rounded-xl p-6 hover:bg-[#59260B]/50 transition-all duration-300 border border-[#ddc3a5]/20 hover:border-[#ddc3a5]/40">
-                {/* Skill Name */}
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
-                  <span className="text-sm text-[#ddc3a5] font-medium">{skill.level}%</span>
-                </div>
-
-                {/* Progress Bar */}
-                <div className="w-full bg-[#201e20]/50 rounded-full h-2 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row gap-12">
+          {/* Technical Skills */}
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex-1 bg-[#2d2320]/60 rounded-2xl p-6 shadow-lg"
+          >
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Technical <span className="text-[#ddc3a5]">Skills</span>
+            </h2>
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+              {technicalSkills
+                .filter(skill => !['TypeScript', 'Kubernetes', 'AWS', 'TensorFlow'].includes(skill.name))
+                .map((skill) => (
                   <motion.div
-                    className="h-2 rounded-full bg-gradient-to-r from-[#ddc3a5] to-[#c9b491]"
-                    initial={{ width: 0 }}
-                    animate={inView ? { width: `${skill.level}%` } : {}}
-                    transition={{ duration: 1.5, delay: 0.5 + index * 0.1 }}
-                  />
-                </div>
-
-                {/* Category Badge */}
-                <div className="flex justify-center">
-                  <span
-                    className="px-3 py-1 rounded-full text-xs font-medium text-white"
-                    style={{ backgroundColor: categoryColors[skill.category] }}
+                    key={skill.name}
+                    whileTap={{ scale: 1.15 }}
+                    className="skill-card flex flex-col items-center justify-center bg-[#674846]/40 rounded-lg p-2 mb-1 shadow transition-all cursor-pointer"
+                    style={{ minHeight: '70px' }}
+                    onTapStart={addHighlight}
+                    onTap={removeHighlight}
                   >
-                    {skill.category}
-                  </span>
-                </div>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#ddc3a5]/10 to-[#c9b491]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="mb-1">
+                      {skill.logo && skillIcons[skill.logo]}
+                    </div>
+                    <span className="text-xs font-semibold text-white text-center mb-0.5">{skill.name}</span>
+                  </motion.div>
+                ))}
+            </div>
+            {/* Currently Learning Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="mt-8"
+            >
+              <h3 className="text-lg font-bold text-[#ddc3a5] mb-3 text-center">Currently Learning</h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                {[
+                  { name: 'Flutter', logo: skillIcons.flutter },
+                  { name: 'Kubernetes', logo: skillIcons.kubernetes },
+                  { name: 'TensorFlow', logo: skillIcons.tensorflow },
+                  { name: 'AWS', logo: skillIcons.aws },
+                ].map((item) => (
+                  <motion.div
+                    key={item.name}
+                    whileTap={{ scale: 1.15 }}
+                    className="skill-card flex flex-col items-center justify-center bg-[#232021] rounded-lg p-2 mb-1 shadow transition-all cursor-pointer"
+                    style={{ minWidth: '80px', minHeight: '70px' }}
+                    onTapStart={addHighlight}
+                    onTap={removeHighlight}
+                  >
+                    <div className="mb-1 text-2xl">{item.logo}</div>
+                    <span className="text-xs font-semibold text-white text-center">{item.name}</span>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Currently Learning Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 text-center"
-        >
-          <h3 className="text-2xl font-bold text-white mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Currently <span className="text-[#ddc3a5]">Learning</span>
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {['Docker & Kubernetes', 'System Design', 'Transformers', 'MLOps', 'Cloud Architecture'].map((item, index) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                className="px-4 py-2 bg-[#013220]/50 text-[#ddc3a5] rounded-full font-medium border border-[#ddc3a5]/30 hover:bg-[#013220]/70 hover:border-[#ddc3a5]/60 transition-all duration-200"
-              >
-                {item}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+          </motion.div>
+          {/* Soft Skills */}
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex-1 bg-[#2d2320]/60 rounded-2xl p-8 shadow-lg"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Soft <span className="text-[#c9b491]">Skills</span>
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-2 gap-6">
+              {softSkills.map((skill) => (
+                <motion.div
+                  key={skill.name}
+                  whileTap={{ scale: 1.15 }}
+                  className="skill-card flex flex-col items-center justify-center bg-[#c9b491]/20 rounded-xl p-4 mb-2 shadow transition-all cursor-pointer"
+                  onTapStart={addHighlight}
+                  onTap={removeHighlight}
+                >
+                  <div className="mb-2 text-3xl">
+                    {skill.logo}
+                  </div>
+                  <span className="text-base font-semibold text-white text-center mb-1">{skill.name}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

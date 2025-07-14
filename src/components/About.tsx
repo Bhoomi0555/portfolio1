@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MapPin, Phone, Heart, Code, Briefcase, GraduationCap } from 'lucide-react';
+import { MapPin, Phone, Heart, Code, GraduationCap } from 'lucide-react';
 import { education } from '../data/portfolio';
 
 const About: React.FC = () => {
@@ -13,7 +13,7 @@ const About: React.FC = () => {
   const quickFacts = [
     { icon: MapPin, label: 'Location', value: 'Mahaveer Nagar, Jaipur' },
     { icon: Phone, label: 'Phone', value: '+91 8875077255' },
-    { icon: Heart, label: 'Interests', value: 'AI, DevOps, Photography' },
+    { icon: Heart, label: 'Interests', value: 'ML, DevOps , Photography' },
     { icon: Code, label: 'Coding', value: '3+ Years Experience' },
   ];
 
@@ -55,16 +55,14 @@ const About: React.FC = () => {
             className="space-y-6"
           >
             <p className="text-lg text-gray-300 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-              I'm a passionate B.Tech AI & Data Science student with a deep fascination for the intersection 
-              of artificial intelligence and modern development practices. My journey began with curiosity 
-              about how machines can learn and has evolved into a comprehensive understanding of both 
-              development and operations.
+            I'm a B.Tech student in AI & Data Science, passionate about the intersection of Machine Learning and
+             DevOps. What started as curiosity about how machines learn has grown into a strong interest in building 
+             and deploying intelligent systems.
             </p>
             
             <p className="text-lg text-gray-300 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
-              With expertise in DevOps practices and machine learning algorithms, I bridge the gap between 
-              cutting-edge AI research and practical, scalable solutions. I believe in writing clean, 
-              efficient code and deploying robust systems that can handle real-world challenges.
+            With skills in Git, Docker, CI/CD, and cloud tools, I aim to connect AI innovation with real-world solutions.
+             I believe in writing clean code, continuous learning, and building tech that creates real impact.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">

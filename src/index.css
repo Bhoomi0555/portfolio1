@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Custom Fonts */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Custom Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* Base Styles */
 * {
@@ -21,6 +21,19 @@ body {
   background-color: #201e20;
   color: white;
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Styles */
+.light body {
+  background-color: #f8f9fa;
+  color: #2d3748;
+}
+
+/* Dark Mode Styles */
+.dark body {
+  background-color: #201e20;
+  color: white;
 }
 
 /* Scrollbar Styles */
@@ -30,6 +43,10 @@ body {
 
 ::-webkit-scrollbar-track {
   background: #201e20;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f8f9fa;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -69,6 +86,15 @@ body {
   50% { box-shadow: 0 0 30px rgba(221, 195, 165, 0.6); }
 }
 
+@keyframes laser {
+  0%, 100% { opacity: 0.7; filter: blur(8px); }
+  50% { opacity: 1; filter: blur(2px); }
+}
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -77,10 +103,23 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+.animate-laser {
+  animation: laser 1.2s ease-in-out infinite;
+}
+.animate-gradient-move {
+  background-size: 200% 200%;
+  animation: gradient-move 2s linear infinite alternate;
+}
+
 /* Selection Styles */
 ::selection {
   background-color: #ddc3a5;
   color: #201e20;
+}
+
+.light ::selection {
+  background-color: #ddc3a5;
+  color: #2d3748;
 }
 
 /* Focus Styles */
@@ -95,4 +134,81 @@ body {
     background: white !important;
     color: black !important;
   }
+}
+
+.blink-light {
+  box-shadow: 0 0 16px #ddc3a5, 0 0 32px #fff3;
+  transition: box-shadow 0.2s;
+}
+
+.skill-card {
+  transition: box-shadow 0.2s;
+}
+.skill-card:hover,
+.skill-card.blink-light {
+  box-shadow: 0 0 16px #ddc3a5, 0 0 32px #fff3;
+}
+
+/* Remove the glow-behind class */
+/* .glow-behind {
+  box-shadow: 0 0 32px 8px #ddc3a5, 0 0 64px 16px #fff3;
+  z-index: 2;
+  transition: box-shadow 0.2s;
+} */
+
+.highlighted-skill {
+  border: 2px solid #ddc3a5 !important;
+  background: #201e20 !important;
+  box-shadow: 0 0 16px #ddc3a5, 0 0 32px #fff3;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s;
+}
+
+/* Certificate Card Glow and Laser Light Effect */
+.certificate-glow {
+  box-shadow: 0 0 24px 8px #ffe7b3, 0 0 60px 16px #ddc3a5;
+  position: relative;
+  z-index: 1;
+}
+
+.certificate-laser {
+  position: relative;
+  overflow: hidden;
+}
+.certificate-laser::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent 40%, #ffe7b3 60%, transparent 80%);
+  opacity: 0.7;
+  transform: rotate(0deg);
+  animation: laser-sweep 0.4s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+  z-index: 2;
+}
+@keyframes laser-sweep {
+  0% {
+    transform: rotate(0deg) scale(1.2);
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(30deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Certificate Modal Glow Background */
+.modal-glow-bg {
+  background: radial-gradient(circle at center, rgba(255, 231, 179, 0.15) 0%, rgba(221, 195, 165, 0.1) 40%, rgba(0, 0, 0, 0.7) 70%);
+  backdrop-filter: blur(8px);
+}
+
+.modal-glow-container {
+  box-shadow: 0 0 40px 20px rgba(255, 231, 179, 0.3), 0 0 80px 40px rgba(221, 195, 165, 0.2);
+  border: 1px solid rgba(255, 231, 179, 0.3);
 }
